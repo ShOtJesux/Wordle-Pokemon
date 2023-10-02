@@ -87,7 +87,7 @@ void cargar(pokemon *p){
 
 void jugar(pokemon *p, int gen1, int gen2){
     char res, prim[10], sec[15];
-    int elegido, nletras=0, i, intentos=5, acierto=0;
+    int elegido, nletras=0, i, intentos=5, acierto=0, aux;
     char letras[27]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     char *tipos[20]={"Normal", "Lucha", "Volador", "Veneno", "Tierra", "Roca", "Bicho", "Fantasma", "Acero", "Fuego", "Agua", "Planta", "Electrico", "Psiquico", "Hielo", "Dragon", "Siniestro", "Hada", "Sin Secundario", "0"};
 
@@ -113,7 +113,9 @@ void jugar(pokemon *p, int gen1, int gen2){
 
     srand(time(NULL)); //Crea una semilla aletoria ligada a la hora del PC
 
-    elegido=(rand()%gen2)+gen1; //Con esa semilla se genera un numero dentro del rango de generaciones elegido, ese numero esta asociado al pokemon en cuestion
+    aux=gen2-gen1;
+    
+    elegido=(rand()%aux)+gen1; //Con esa semilla se genera un numero dentro del rango de generaciones elegido, ese numero esta asociado al pokemon en cuestion
 
     while(p[elegido].nombre[nletras]!='\0'){ //Se cuentan el numero de letras que tiene el pokemon
         nletras++;
